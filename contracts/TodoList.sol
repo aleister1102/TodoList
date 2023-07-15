@@ -3,7 +3,8 @@ pragma solidity >=0.8.0 <0.9.0;
 
 contract TodoList {
     event TaskCreated(uint id, string content, bool completed);
-    event TaskCompleted(uint id, bool completed);
+    event TaskCompleted(uint id, string content, bool completed);
+    event TaskDeleted(uint id, string content, bool completed);
 
     uint public taskCount = 0;
 
@@ -26,7 +27,7 @@ contract TodoList {
 
         emit TaskCreated(taskCount, _content, false);
 
-        taskCount++;
+        taskCount = tasks.length;
     }
 
     function toggleCompleted(uint _id) public {
@@ -36,6 +37,20 @@ contract TodoList {
 
         tasks[_id] = task;
 
-        emit TaskCompleted(_id, task.completed);
+        emit TaskCompleted(_id, task.content, task.completed);
+    }
+
+    function deleteTask(uint _id) public {
+        require(_id >= 0 && _id <= tasks.length - 1, "Task does not exist");
+
+        uint lastTaskIndex = tasks.length - 1;
+        Task memory lastTask = tasks[lastTaskIndex];
+        Task memory deletingTask = tasks[_id];
+        tasks[_id] = lastTask;
+        tasks.pop();
+
+        emit TaskDeleted(_id, deletingTask.content, deletingTask.completed);
+
+        taskCount = tasks.length;
     }
 }

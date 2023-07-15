@@ -13,6 +13,7 @@ export default function Checkbox({ id, completed }: { id: number, completed: boo
         try {
             const tx = await contract.connect(signer).toggleCompleted(id);
             showToast(`🧾 Transaction hash: ${tx.hash}`);
+            console.log(`🧾 Transaction hash: ${tx.hash}`)
         } catch (error) {
             showToast(`❌ Failed to toggle completed: ${error}`);
         }

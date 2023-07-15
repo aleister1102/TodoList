@@ -5,7 +5,7 @@ import TodoList from '../../../build/contracts/TodoList.json'
 
 const SEPOLIA_NETWORK_ID = 11155111;
 
-export type TodoListContractContextType = {
+export interface TodoListContractContextType {
     contract: ethers.Contract | null,
 }
 

@@ -62,7 +62,8 @@ export default function TaskList() {
         else {
             try {
                 const tx = await contract.connect(signer).createTask("A new task");
-                console.log(`🧾 Transaction hash: ${tx.hash}`);
+                showToast(`🧾 Transaction hash: ${tx.hash}`);
+                console.log(`🧾 Transaction hash: ${tx.hash}`)
             } catch (error) {
                 showToast(`❌ Failed to create task: ${error}`);
             }
