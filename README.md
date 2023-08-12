@@ -10,9 +10,9 @@ Following this tutorial: https://www.dappuniversity.com/articles/blockchain-app-
 
 ![Alt text](demo.png)
 
-### Web site
+### Smart Contract
 
-https://todo-list-smoky-nu.vercel.app/
+[TodoList smart contract](https://sepolia.etherscan.io/address/0xCbcaf53BAE187f850C88bd674bfC523B83f7060B)
 
 ## Environment Variables
 
